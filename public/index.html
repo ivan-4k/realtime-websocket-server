@@ -1,0 +1,105 @@
+ <!DOCTYPE html>
+ <html lang="id">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Sistem Antrian Klinik - Real-time Demo</title>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+     <div class="app-container">
+         <!-- Header -->
+         <header class="header">
+             <h1 class="header-title">Sistem Antrian Klinik</h1>
+             <p class="header-subtitle">Real-time Demo</p>
+         </header>
+ 
+         <!-- Connection Status Bar -->
+         <div class="status-bar">
+             <div class="connection-status">
+                 <span class="status-dot" id="statusDot"></span>
+                 <span id="connectionText">Menghubungkan...</span>
+             </div>
+             <div class="client-count">
+                 Clients: <span id="clientCount">0</span>
+             </div>
+         </div>
+ 
+         <!-- Statistics Cards -->
+         <div class="stats-container">
+             <div class="stat-card stat-waiting">
+                 <div class="stat-number" id="statMenunggu">0</div>
+                 <div class="stat-label">Menunggu</div>
+             </div>
+             <div class="stat-card stat-serving">
+                 <div class="stat-number" id="statDilayani">0</div>
+                 <div class="stat-label">Dilayani</div>
+             </div>
+             <div class="stat-card stat-done">
+                 <div class="stat-number" id="statSelesai">0</div>
+                 <div class="stat-label">Selesai</div>
+             </div>
+         </div>
+ 
+         <!-- Main Content Grid -->
+         <div class="main-grid">
+             <!-- Form Antrian Baru -->
+             <div class="card">
+                 <h2 class="card-title">Ambil Antrian Baru</h2>
+                 <form id="formAntrian">
+                     <div class="form-group">
+                         <label for="namaPasien">Nama Pasien</label>
+                         <input type="text" id="namaPasien" placeholder="Masukkan nama pasien" required>
+                     </div>
+                     <div class="form-group">
+                         <label for="keluhan">Keluhan</label>
+                         <textarea id="keluhan" placeholder="Jelaskan keluhan" rows="3"></textarea>
+                     </div>
+                     <div class="form-group">
+                         <label for="dokter">Pilih Dokter</label>
+                         <select id="dokter" required>
+                             <option value="">-- Pilih Dokter --</option>
+                         </select>
+                     </div>
+                     <button type="submit" class="btn btn-primary">Ambil Antrian</button>
+                 </form>
+             </div>
+ 
+             <!-- Daftar Antrian -->
+             <div class="card">
+                 <h2 class="card-title">Daftar Antrian</h2>
+                 <div id="antrianList" class="queue-list">
+                     <p class="empty-message">Belum ada antrian</p>
+                 </div>
+                 <button id="btnPanggil" class="btn btn-success">Panggil Berikutnya</button>
+             </div>
+ 
+             <!-- Status Dokter -->
+             <div class="card">
+                 <h2 class="card-title">Status Dokter</h2>
+                 <div id="dokterList" class="doctor-list">
+                     <p class="empty-message">Memuat data dokter...</p>
+                 </div>
+             </div>
+         </div>
+ 
+         <!-- Log Aktivitas -->
+         <div class="card log-card">
+             <h2 class="card-title">Log Aktivitas</h2>
+             <div id="logContainer" class="log-container">
+                 <p class="log-item">Sistem siap...</p>
+             </div>
+         </div>
+     </div>
+ 
+     <!-- Notification Toast -->
+     <div id="toast" class="toast hidden">
+         <span id="toastMessage"></span>
+     </div>
+ 
+     <script src="script.js"></script>
+ </body>
+ </html>
